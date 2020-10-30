@@ -24,29 +24,58 @@ Item {
         id: about
     }
 
-    Icon {
-        name: "logo-asteroidos"
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: Dims.h(10)
-        anchors.top: parent.top
-        anchors.bottom: osLabel.top
-        anchors.bottomMargin: Dims.h(3)
-        width: height
+    PageHeader {
+        id: title
+        text: qsTrId("id-display-page")
     }
-    Label {
-        id: osLabel
-        text: about.operatingSystemName
-        font.bold: true
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: releaseLabel.top
+
+    Flickable {
+        anchors.fill: parent
+        contentHeight: Dims.h(30) + 3*Dims.h(34)
+        boundsBehavior: Flickable.DragOverBounds
+        flickableDirection: Flickable.VerticalFlick
+
+        GridLayout {
+            id: scrollableAbout
+            columns: 2
+            anchors.fill: parent
+            anchors.margins: Dims.l(15)
+
+            Icon {
+                name: "logo-asteroidos"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.topMargin: Dims.h(10)
+                anchors.top: parent.top
+                anchors.bottom: osLabel.top
+                anchors.bottomMargin: Dims.h(3)
+                width: height
+            }
+            Label {
+                id: osLabel
+                text: about.operatingSystemName
+                font.bold: true
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: releaseLabel.top
+            }
+            Label {
+                id: releaseLabel
+                text: about.softwareVersion
+                opacity: 0.8
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Dims.h(7)
+            }
+
+            Label {
+                id: releaseLabel
+                text: "TEST"
+                opacity: 0.8
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: Dims.h(7)
+            }
+        }
     }
-    Label {
-        id: releaseLabel
-        text: about.softwareVersion
-        opacity: 0.8
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: Dims.h(7)
-    }
+            
 }
 
